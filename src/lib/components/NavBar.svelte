@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { cn } from '$lib/utils.js';
-	import { buttonVariants } from '$lib/components/ui/button';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 </script>
 
@@ -11,6 +10,7 @@
 	<div class="container flex h-14 max-w-screen-2xl items-center">
 		<div class="mr-4 hidden md:flex">
 			<a href="/" class="mr-6 flex items-center space-x-2">
+				<img src="/favicon.png" alt="TrailEyes Logo" class="h-6 w-6" />
 				<span class="hidden font-bold sm:inline-block">TrailEyes Panel</span>
 			</a>
 			<nav class="flex items-center gap-6 text-sm">
