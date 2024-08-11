@@ -32,7 +32,7 @@ export default [
     files: ['**/components/ui/**/*.svelte'],
     rules: {
       '@typescript-eslint/no-unused-vars': [
-        'warn',
+        'off',
         {
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^$$(Props|Events|Slots|Generic)$',
