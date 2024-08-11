@@ -2,7 +2,7 @@
 	import CircleUser from 'lucide-svelte/icons/circle-user';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
-	import { resetMode, setMode } from 'mode-watcher';
+	import { userPrefersMode } from 'mode-watcher';
 </script>
 
 <DropdownMenu.Root>
@@ -24,9 +24,13 @@
 					y: 0
 				}}
 			>
-				<DropdownMenu.Item on:click={() => setMode('light')}>Light</DropdownMenu.Item>
-				<DropdownMenu.Item on:click={() => setMode('dark')}>Dark</DropdownMenu.Item>
-				<DropdownMenu.Item on:click={() => resetMode()}>System</DropdownMenu.Item>
+				<DropdownMenu.RadioGroup bind:value={$userPrefersMode}>
+					<DropdownMenu.RadioItem indicator="checkmark" value="light">Light</DropdownMenu.RadioItem>
+					<DropdownMenu.RadioItem indicator="checkmark" value="dark">Dark</DropdownMenu.RadioItem>
+					<DropdownMenu.RadioItem indicator="checkmark" value="system"
+						>System</DropdownMenu.RadioItem
+					>
+				</DropdownMenu.RadioGroup>
 			</DropdownMenu.SubContent>
 		</DropdownMenu.Sub>
 		<DropdownMenu.Separator />

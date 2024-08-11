@@ -1,82 +1,53 @@
-<script lang="ts">
-	import { page } from '$app/stores';
-	import { cn } from '$lib/utils.js';
-	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+<script>
+	import Package2 from 'lucide-svelte/icons/package-2';
+	import UserMenu from '$lib/components/UserMenu.svelte';
+	import { Button } from '$lib/components/ui/button/index';
+	import Menu from 'lucide-svelte/icons/menu';
+	import * as Sheet from '$lib/components/ui/sheet/index';
 </script>
 
-<header
-	class="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
->
-	<div class="container flex h-14 max-w-screen-2xl items-center">
-		<div class="mr-4 hidden md:flex">
-			<a href="/" class="mr-6 flex items-center space-x-2">
-				<img src="/favicon.png" alt="TrailEyes Logo" class="h-6 w-6" />
-				<span class="hidden font-bold sm:inline-block">TrailEyes Panel</span>
-			</a>
-			<nav class="flex items-center gap-6 text-sm">
-				<a
-					href="/docs"
-					class={cn(
-						'hover:text-foreground/80 transition-colors',
-						$page.url.pathname === '/docs' ? 'text-foreground' : 'text-foreground/60'
-					)}
-				>
-					Docs
+<header class="bg-background sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6">
+	<nav
+		class="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
+	>
+		<a href="##" class="flex items-center gap-2 text-lg font-semibold md:text-base">
+			<img src="/favicon.png" alt="TrailEyes Panel" class="h-8 w-8" />
+			<span class="sr-only">TrailEyes Panel</span>
+		</a>
+		<a href="##" class="text-foreground hover:text-foreground transition-colors"> Dashboard </a>
+		<a href="##" class="text-muted-foreground hover:text-foreground transition-colors"> Orders </a>
+		<a href="##" class="text-muted-foreground hover:text-foreground transition-colors">
+			Products
+		</a>
+		<a href="##" class="text-muted-foreground hover:text-foreground transition-colors">
+			Customers
+		</a>
+		<a href="##" class="text-muted-foreground hover:text-foreground transition-colors">
+			Analytics
+		</a>
+	</nav>
+	<Sheet.Root>
+		<Sheet.Trigger asChild let:builder>
+			<Button variant="outline" size="icon" class="shrink-0 md:hidden" builders={[builder]}>
+				<Menu class="h-5 w-5" />
+				<span class="sr-only">Toggle navigation menu</span>
+			</Button>
+		</Sheet.Trigger>
+		<Sheet.Content side="left">
+			<nav class="grid gap-6 text-lg font-medium">
+				<a href="##" class="flex items-center gap-2 text-lg font-semibold">
+					<Package2 class="h-6 w-6" />
+					<span class="sr-only">Acme Inc</span>
 				</a>
-				<a
-					href="/docs/components"
-					class={cn(
-						'hover:text-foreground/80 transition-colors',
-						$page.url.pathname.startsWith('/docs/components')
-							? 'text-foreground'
-							: 'text-foreground/60'
-					)}
-				>
-					Components
-				</a>
-				<a
-					href="/themes"
-					class={cn(
-						'hover:text-foreground/80 transition-colors',
-						$page.url.pathname.startsWith('/themes') ? 'text-foreground' : 'text-foreground/60'
-					)}
-				>
-					Themes
-				</a>
-				<a
-					href="/examples"
-					class={cn(
-						'hover:text-foreground/80 transition-colors',
-						$page.url.pathname.startsWith('/examples') ? 'text-foreground' : 'text-foreground/60'
-					)}
-				>
-					Examples
-				</a>
-
-				<a
-					href="/blocks"
-					class={cn(
-						'hover:text-foreground/80 transition-colors',
-						$page.url.pathname.startsWith('/blocks') ? 'text-foreground' : 'text-foreground/60'
-					)}
-				>
-					Blocks
-				</a>
-				<a
-					href="/colors"
-					class={cn(
-						'hover:text-foreground/80 transition-colors',
-						$page.url.pathname.startsWith('/colors') ? 'text-foreground' : 'text-foreground/60'
-					)}
-				>
-					Colors
-				</a>
+				<a href="##" class="hover:text-foreground"> Dashboard </a>
+				<a href="##" class="text-muted-foreground hover:text-foreground"> Orders </a>
+				<a href="##" class="text-muted-foreground hover:text-foreground"> Products </a>
+				<a href="##" class="text-muted-foreground hover:text-foreground"> Customers </a>
+				<a href="##" class="text-muted-foreground hover:text-foreground"> Analytics </a>
 			</nav>
-		</div>
-		<div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-			<nav class="flex items-center">
-				<ThemeToggle />
-			</nav>
-		</div>
+		</Sheet.Content>
+	</Sheet.Root>
+	<div class="flex items-end gap-4 md:ml-auto md:gap-2 lg:gap-4">
+		<UserMenu />
 	</div>
 </header>
