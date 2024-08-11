@@ -6,41 +6,41 @@ import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-	js.configs.recommended,
-	...ts.configs.recommended,
-	...svelte.configs['flat/recommended'],
-	prettier,
-	...svelte.configs['flat/prettier'],
-	{
-		languageOptions: {
-			globals: {
-				...globals.browser,
-				...globals.node
-			}
-		}
-	},
-	{
-		files: ['**/*.svelte'],
-		languageOptions: {
-			parserOptions: {
-				parser: ts.parser
-			}
-		}
-	},
-	{
-		// Disables ESLint rules for shadcn components
-		files: ['**/components/ui/**/*.svelte'],
-		rules: {
-			'@typescript-eslint/no-unused-vars': [
-				'warn',
-				{
-					argsIgnorePattern: '^_',
-					varsIgnorePattern: '^$$(Props|Events|Slots|Generic)$'
-				}
-			]
-		}
-	},
-	{
-		ignores: ['build/', '.svelte-kit/', 'dist/']
-	}
+  js.configs.recommended,
+  ...ts.configs.recommended,
+  ...svelte.configs['flat/recommended'],
+  prettier,
+  ...svelte.configs['flat/prettier'],
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+  },
+  {
+    files: ['**/*.svelte'],
+    languageOptions: {
+      parserOptions: {
+        parser: ts.parser,
+      },
+    },
+  },
+  {
+    // Disables ESLint rules for shadcn components
+    files: ['**/components/ui/**/*.svelte'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^$$(Props|Events|Slots|Generic)$',
+        },
+      ],
+    },
+  },
+  {
+    ignores: ['build/', '.svelte-kit/', 'dist/'],
+  },
 ];
